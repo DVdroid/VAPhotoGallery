@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7521F9F12456180B00E607B4 /* VAPhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521F9F02456180B00E607B4 /* VAPhotoModel.swift */; };
+		755C1AF62456162A00CD7D35 /* VAPhotoGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C1AF52456162A00CD7D35 /* VAPhotoGalleryCell.swift */; };
 		D6CE73F72456092300D3F548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CE73F62456092300D3F548 /* AppDelegate.swift */; };
 		D6CE73FB2456092300D3F548 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CE73FA2456092300D3F548 /* ViewController.swift */; };
 		D6CE73FE2456092300D3F548 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6CE73FC2456092300D3F548 /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7521F9F02456180B00E607B4 /* VAPhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAPhotoModel.swift; sourceTree = "<group>"; };
+		755C1AF52456162A00CD7D35 /* VAPhotoGalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAPhotoGalleryCell.swift; sourceTree = "<group>"; };
 		D6CE73F32456092300D3F548 /* VAPhotoGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VAPhotoGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6CE73F62456092300D3F548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6CE73FA2456092300D3F548 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7521F9EF245617EC00E607B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7521F9F02456180B00E607B4 /* VAPhotoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D6CE73EA2456092300D3F548 = {
 			isa = PBXGroup;
 			children = (
@@ -77,8 +89,10 @@
 		D6CE73F52456092300D3F548 /* VAPhotoGallery */ = {
 			isa = PBXGroup;
 			children = (
+				7521F9EF245617EC00E607B4 /* Model */,
 				D6CE73F62456092300D3F548 /* AppDelegate.swift */,
 				D6CE73FA2456092300D3F548 /* ViewController.swift */,
+				755C1AF52456162A00CD7D35 /* VAPhotoGalleryCell.swift */,
 				D6CE73FC2456092300D3F548 /* Main.storyboard */,
 				D6CE73FF2456092600D3F548 /* Assets.xcassets */,
 				D6CE74012456092600D3F548 /* LaunchScreen.storyboard */,
@@ -197,6 +211,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7521F9F12456180B00E607B4 /* VAPhotoModel.swift in Sources */,
+				755C1AF62456162A00CD7D35 /* VAPhotoGalleryCell.swift in Sources */,
 				D6CE73FB2456092300D3F548 /* ViewController.swift in Sources */,
 				D6CE73F72456092300D3F548 /* AppDelegate.swift in Sources */,
 			);
