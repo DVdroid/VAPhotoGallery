@@ -15,7 +15,6 @@ class VAPhotoGalleryCell: UITableViewCell {
         let img = UIImageView()
         img.contentMode = .scaleAspectFill
         img.translatesAutoresizingMaskIntoConstraints = false
-        img.layer.cornerRadius = 35
         img.clipsToBounds = true
         return img
     }()
@@ -54,27 +53,28 @@ class VAPhotoGalleryCell: UITableViewCell {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo:self.contentView.topAnchor, constant: 20),
             titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 20)
+            titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -20)
         ])
     }
     func addPhoto() {
-        self.addSubview(photo)
+        self.contentView.addSubview(photo)
 
         NSLayoutConstraint.activate([
-            photo.heightAnchor.constraint(equalToConstant: 150.0),
+            photo.heightAnchor.constraint(equalToConstant: 100.0),
             photo.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 20),
-            photo.trailingAnchor.constraint(equalTo: self.titleLabel.trailingAnchor, constant: 20)
+            photo.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -20),
+            photo.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20)
         ])
     }
     func addDescription() {
-        self.addSubview(photoDescriptionLabel)
+        self.contentView.addSubview(photoDescriptionLabel)
 
         NSLayoutConstraint.activate([
             photoDescriptionLabel.topAnchor.constraint(equalTo:self.photo.bottomAnchor, constant: 20),
             photoDescriptionLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20),
-            photoDescriptionLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 20),
-            self.contentView.bottomAnchor.constraint(equalTo: self.photoDescriptionLabel.bottomAnchor, constant: 20)
+            photoDescriptionLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -20)
         ])
+        self.contentView.bottomAnchor.constraint(equalTo: self.photoDescriptionLabel.bottomAnchor, constant: 20).priority = UILayoutPriority(rawValue: 750)
     }
     
     required init?(coder aDecoder: NSCoder) {

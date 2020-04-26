@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     // MARK: Constants Enum
        private enum Constants {
-        static let tableAutomaticRowHeight = 10.0
+        static let tableAutomaticRowHeight = 220.0
         static let screenTitle = "Employees"
         static let cellIdentifier = "PhotoGallery"
            
@@ -21,7 +21,8 @@ class ViewController: UIViewController {
            didSet {
             self.photoTableView.dataSource = self
             self.photoTableView.register(VAPhotoGalleryCell.self, forCellReuseIdentifier: "photoCell")
-            self.photoTableView.estimatedRowHeight = UITableView.automaticDimension
+            self.photoTableView.estimatedRowHeight = CGFloat(Constants.tableAutomaticRowHeight)
+            self.photoTableView.rowHeight = UITableView.automaticDimension
            }
        }
 
