@@ -38,7 +38,7 @@ final class NetworkWrapper {
     {        
         session.dataTask(with: url) { (data, response, error) in
             
-            let content = readDummyJSONResonse()!
+            let content = readDummyJSONResponse()!
             DispatchQueue.main.async {
                 
                 //                guard let content = data, error == nil else {
@@ -67,7 +67,7 @@ final class NetworkFetcher {
     
     private var photos: [VAPhoto]?
     private var photoResponse: VAResponseModel?
-    private static let memberUrlString = "https://randomuser.me/api/?results=20"
+    private static let memberUrlString = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
     
     func fetchMembers(with completion: @escaping (Result<VAResponseModel, Error>) -> Void) {
         guard let memberURL = URL(string: type(of: self).memberUrlString) else { return }

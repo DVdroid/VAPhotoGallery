@@ -23,7 +23,7 @@ extension DataFetchingError: LocalizedError {
         case .badResponse:
             return NSLocalizedString("Response is not in appropriate format.", comment: "Bad Response")
         case .noInternet:
-            return NSLocalizedString("Please check your internet connetion.", comment: "No Internet")
+            return NSLocalizedString("Please check your internet connection.", comment: "No Internet")
         case .noRecords:
             return NSLocalizedString("No records to show.", comment: "No Records")
         }
