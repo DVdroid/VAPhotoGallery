@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemberTableView: UITableView {
+class PhotoTableView: UITableView {
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -21,9 +21,9 @@ class MemberTableView: UITableView {
     }
     
     private func configure() {
-        //self.register(VAPhotoGalleryCell.self)
+        self.register(VAPhotoGalleryCell.self)
         self.estimatedRowHeight = UITableView.automaticDimension
-        self.rowHeight = 100.0
+        self.rowHeight = 300.0
     }
     
     private func showTableView(in parentView: UIView) {
@@ -47,7 +47,7 @@ class MemberTableView: UITableView {
     }
 }
 
-extension MemberTableView: AddableRemovable {
+extension PhotoTableView: AddableRemovable {
     
     func addAsSubView(in parentView: UIView) {
         self.showTableView(in: parentView)

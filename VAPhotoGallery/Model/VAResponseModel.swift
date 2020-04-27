@@ -10,11 +10,11 @@ import Foundation
 
 struct VAResponseModel: Codable {
     let pictureCollectionTitle: String?
-    var pictures: [VAPhoto]?
+    var photos: [VAPhoto]?
 
     enum CodingKeys: String, CodingKey {
         case pictureCollectionTitle = "title"
-        case pictures = "rows"
+        case photos = "rows"
     }
 }
 
@@ -25,7 +25,7 @@ struct VAPhoto: Codable {
 
     enum CodingKeys: String, CodingKey {
         case title = "title"
-        case description = "description"
         case imageUrl = "imageHref"
+        case description = "description"
     }
 }

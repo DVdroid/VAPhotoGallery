@@ -27,30 +27,29 @@ extension URLSession: URLSessionProtocol {
 extension URLSessionDataTask: URLSessionDataTaskProtocol {}
 
 final class NetworkWrapper {
-    
-    //private static let urlString = URL(string: "https://randomuser.me/api/?results=5")
+
     static let sharedInstance = NetworkWrapper()
     private init(){}
-    
-    func makeNetworkRequest<T: Decodable>(url: URL,
-                                          using session: URLSessionProtocol = URLSession.shared,
-                                          result: @escaping (Result<T, Error>) -> Void)
+
+    func fetchMembers<T: Decodable>(for url: URL,
+                                    using session: URLSessionProtocol = URLSession.shared,
+                                    result: @escaping (Result<T, Error>) -> Void)
     {        
         session.dataTask(with: url) { (data, response, error) in
             
-            let content = readDummyJSONResponse()!
+            //let content = readDummyJSONResponse()!
             DispatchQueue.main.async {
                 
-                //                guard let content = data, error == nil else {
-                //                    debugPrint(error.debugDescription)
-                //                    completionHandler(Jet2TTError.badResponse, nil)
-                //                    return
-                //                }
+//                guard let content = data, error == nil else {
+//                    debugPrint(error.debugDescription)
+//                    result(.failure(DataFetchingError.badResponse))
+//                    return
+//                }
                 
                 do {
-                    let myNewObject = try JSONDecoder().decode(T.self, from: content)
-                    //debugPrint(myNewObject)
-                    result(.success(myNewObject))
+                    let content = readDummyJSONResponse()!
+                    let responseObject = try JSONDecoder().decode(T.self, from: content)
+                    result(.success(responseObject))
                 } catch { let error = error as NSError
                     debugPrint(error.userInfo.debugDescription)
                     debugPrint(DataFetchingError.badResponse.errorDescription!)
@@ -58,21 +57,7 @@ final class NetworkWrapper {
                     return
                 }
             }
-            }.resume()
+        }.resume()
     }
 }
 
-
-final class NetworkFetcher {
-    
-    private var photos: [VAPhoto]?
-    private var photoResponse: VAResponseModel?
-    private static let memberUrlString = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-    
-    func fetchMembers(with completion: @escaping (Result<VAResponseModel, Error>) -> Void) {
-        guard let memberURL = URL(string: type(of: self).memberUrlString) else { return }
-        NetworkWrapper.sharedInstance.makeNetworkRequest(url: memberURL) { result in
-            completion(result)
-        }
-    }
-}

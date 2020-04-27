@@ -52,7 +52,7 @@ extension UIImageView {
 }
 
 func readDummyJSONResponse() -> Data? {
-    guard let jsonURL = Bundle.main.url(forResource: "employee", withExtension: "json") else {
+    guard let jsonURL = Bundle.main.url(forResource: "Photos", withExtension: "json") else {
         return nil
     }
     return try! Data(contentsOf: jsonURL)
