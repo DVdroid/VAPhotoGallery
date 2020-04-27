@@ -26,7 +26,7 @@ class ViewController: UIViewController {
            }
        }
 
-    var photoModelArray = [VAPhotoModel]()
+    var photoModelArray = [VAPhoto]()
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -37,9 +37,12 @@ class ViewController: UIViewController {
     }
     
     func createProductArray() {
-        self.photoModelArray.append(VAPhotoModel(photoTilte: "Glasses", photoImageUrl: "img1" , photoDescription: "This is best Glasses I've ever seen"))
-        self.photoModelArray.append(VAPhotoModel(photoTilte: "Desert", photoImageUrl: "img2" , photoDescription: "This is so yummy"))
-        self.photoModelArray.append(VAPhotoModel(photoTilte: "Camera Lens", photoImageUrl:  "img3", photoDescription: "I wish I had this camera lens"))
+        let photo1 = VAPhoto(title: "Glasses", imageUrl: "img1", description: "This is best Glasses I've ever seen")
+         let photo2 = VAPhoto(title: "Desert", imageUrl: "img2", description: "This is so yummy")
+         let photo3 = VAPhoto(title: "Camera Lens", imageUrl: "img3", description: "I wish I had this camera lens")
+        self.photoModelArray.append(photo1)
+        self.photoModelArray.append(photo2)
+        self.photoModelArray.append(photo3)
     }
 
 }
@@ -52,9 +55,9 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "photoCell", for: indexPath) as! VAPhotoGalleryCell
         let currentLastItem = photoModelArray[indexPath.row]
-        cell.titleLabel.text = currentLastItem.photoTilte
-        cell.photo.image = UIImage(named: currentLastItem.photoImageUrl ?? "", in: Bundle.main, compatibleWith: nil)
-        cell.photoDescriptionLabel.text = currentLastItem.photoDescription
+        cell.titleLabel.text = currentLastItem.title
+        cell.photo.image = UIImage(named: currentLastItem.imageUrl ?? "", in: Bundle.main, compatibleWith: nil)
+        cell.photoDescriptionLabel.text = currentLastItem.description
 
         return cell
     }
