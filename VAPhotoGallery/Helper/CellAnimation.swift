@@ -33,9 +33,9 @@ enum AnimationFactory {
             UIView.animate(
                 withDuration: duration,
                 delay: delayFactor * Double(indexPath.row),
-                usingSpringWithDamping: 0.4,
-                initialSpringVelocity: 0.1,
-                options: [.preferredFramesPerSecond60],
+                usingSpringWithDamping: 1,
+                initialSpringVelocity: 0.5,
+                options: [.curveEaseInOut],
                 animations: {
                     cell.transform = CGAffineTransform(translationX: 0, y: 0)
             })

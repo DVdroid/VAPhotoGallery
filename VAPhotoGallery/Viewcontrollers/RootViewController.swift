@@ -113,9 +113,9 @@ extension RootViewController: UITableViewDataSource {
 extension RootViewController: UITableViewDelegate {
     
      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        let animation = AnimationFactory.makeMoveUpWithBounce(rowHeight: cell.frame.height, duration: 1.0, delayFactor: 0.05)
-//        let animator = CellAnimator(animation: animation)
-//        animator.animate(cell: cell, at: indexPath, in: tableView)
+        let animation = AnimationFactory.makeMoveUpWithBounce(rowHeight: cell.frame.height, duration: 0.5, delayFactor: 0.05)
+        let animator = CellAnimator(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: tableView)
     }
 }
 
