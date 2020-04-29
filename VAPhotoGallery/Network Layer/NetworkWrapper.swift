@@ -40,15 +40,16 @@ final class NetworkWrapper {
             //let content = readDummyJSONResponse()!
             DispatchQueue.main.async {
                 
-//                guard let content = data, error == nil else {
-//                    debugPrint(error.debugDescription)
-//                    result(.failure(DataFetchingError.badResponse))
-//                    return
-//                }
-                
+                guard let content = data, error == nil else {
+                    debugPrint(error.debugDescription)
+                    result(.failure(DataFetchingError.badResponse))
+                    return
+                }
+                // Converted unsupported json reponse into utf8
+                let utf8Data = String(decoding: content, as: UTF8.self).data(using: .utf8)
+
                 do {
-                    let content = readDummyJSONResponse()!
-                    let responseObject = try JSONDecoder().decode(T.self, from: content)
+                    let responseObject = try JSONDecoder().decode(T.self, from: utf8Data!)
                     result(.success(responseObject))
                 } catch { let error = error as NSError
                     debugPrint(error.userInfo.debugDescription)

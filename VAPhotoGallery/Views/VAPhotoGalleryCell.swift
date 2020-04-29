@@ -23,33 +23,6 @@ class VAPhotoGalleryCell: UITableViewCell, CellConfigurable, ReusableView {
     
     lazy var childView: CellChildViewConfigurable = VAPhotoGalleryCellView()
     
-    let photoView: UIImageView = {
-        let img = UIImageView()
-        img.contentMode = .scaleAspectFill
-        img.layer.cornerRadius = 5
-        img.translatesAutoresizingMaskIntoConstraints = false
-        img.clipsToBounds = true
-        return img
-    }()
-    
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "AvenirNext-DemiBold", size: 20)
-        label.textColor = UIColor.black
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let photoDescriptionLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Avenir-Book", size: 16)
-        label.textColor = UIColor.lightGray
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
