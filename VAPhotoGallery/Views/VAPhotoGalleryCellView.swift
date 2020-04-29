@@ -26,7 +26,7 @@ final class VAPhotoGalleryCellView: UIView {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont(name: "AvenirNext-DemiBold", size: 16)
         label.textColor = UIColor.black
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -35,9 +35,8 @@ final class VAPhotoGalleryCellView: UIView {
 
     let photoDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textColor = UIColor.black
-        label.backgroundColor = UIColor.yellow
+        label.font = UIFont(name: "Avenir-Book", size: 18)
+        label.textColor = UIColor.lightGray
         label.layer.cornerRadius = 5
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -76,33 +75,41 @@ final class VAPhotoGalleryCellView: UIView {
 
     func addTitleLabel() {
         self.contentView.addSubview(titleLabel)
+        let marginGuide = contentView.layoutMarginsGuide
+
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo:self.contentView.topAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20),
-            self.contentView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 20)
+            titleLabel.topAnchor.constraint(equalTo:marginGuide.topAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor, constant: 20)
         ])
     }
 
     func addPhotoView() {
         self.contentView.addSubview(photoView)
+        let marginGuide = contentView.layoutMarginsGuide
+
 
         NSLayoutConstraint.activate([
             photoView.heightAnchor.constraint(equalToConstant: 150.0),
             photoView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 20),
-            photoView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20),
-            self.contentView.trailingAnchor.constraint(equalTo: photoView.trailingAnchor, constant: 20)
+            photoView.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor, constant: 20),
+            photoView.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor, constant: 20)
         ])
     }
 
     func addDescription() {
         self.contentView.addSubview(photoDescriptionLabel)
+        let marginGuide = contentView.layoutMarginsGuide
+
 
         NSLayoutConstraint.activate([
             photoDescriptionLabel.topAnchor.constraint(equalTo:self.photoView.bottomAnchor, constant: 20),
-            photoDescriptionLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20),
-            self.contentView.trailingAnchor.constraint(equalTo: photoDescriptionLabel.trailingAnchor, constant: 20)
+            photoDescriptionLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor, constant: 20),
+            photoDescriptionLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor, constant: 20),
+            self.photoDescriptionLabel.bottomAnchor.constraint(greaterThanOrEqualTo: marginGuide.bottomAnchor, constant: 0)
+            
         ])
-        self.contentView.bottomAnchor.constraint(equalTo: self.photoDescriptionLabel.bottomAnchor, constant: 20).priority = UILayoutPriority(rawValue: 750)
+       // self.contentView.bottomAnchor.constraint(greaterThanOrEqualTo: self.photoDescriptionLabel.bottomAnchor, constant: 20).priority = UILayoutPriority(rawValue: 750)
     }
 }
 

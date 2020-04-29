@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7521F9F12456180B00E607B4 /* VAResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521F9F02456180B00E607B4 /* VAResponseModel.swift */; };
 		755C1AF62456162A00CD7D35 /* VAPhotoGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C1AF52456162A00CD7D35 /* VAPhotoGalleryCell.swift */; };
+		7592A792245861DC00890488 /* CellAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7592A791245861DC00890488 /* CellAnimation.swift */; };
 		D6789029245786520063265E /* VAPhotoGalleryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6789028245786510063265E /* VAPhotoGalleryCellView.swift */; };
 		D6CE73F72456092300D3F548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CE73F62456092300D3F548 /* AppDelegate.swift */; };
 		D6CE73FB2456092300D3F548 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CE73FA2456092300D3F548 /* RootViewController.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		7521F9F02456180B00E607B4 /* VAResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAResponseModel.swift; sourceTree = "<group>"; };
 		755C1AF52456162A00CD7D35 /* VAPhotoGalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAPhotoGalleryCell.swift; sourceTree = "<group>"; };
+		7592A791245861DC00890488 /* CellAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellAnimation.swift; sourceTree = "<group>"; };
 		D6789028245786510063265E /* VAPhotoGalleryCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VAPhotoGalleryCellView.swift; sourceTree = "<group>"; };
 		D6CE73F32456092300D3F548 /* VAPhotoGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VAPhotoGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6CE73F62456092300D3F548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				D6CE741D2456D88A00D3F548 /* ImageDownloader.swift */,
 				D6CE741F2456D88A00D3F548 /* UIAlertController+Helper.swift */,
 				D6CE741E2456D88A00D3F548 /* Utility.swift */,
+				7592A791245861DC00890488 /* CellAnimation.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				D6CE742E2456D8FE00D3F548 /* SpinnerView.swift in Sources */,
 				D6CE73F72456092300D3F548 /* AppDelegate.swift in Sources */,
 				D6CE742F2456D8FE00D3F548 /* PhotoTableView.swift in Sources */,
+				7592A792245861DC00890488 /* CellAnimation.swift in Sources */,
 				D6CE74302456D8FE00D3F548 /* NoConnectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,7 +398,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -448,7 +452,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -463,7 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B6LN4XWA2V;
+				DEVELOPMENT_TEAM = 5S24M42N68;
 				INFOPLIST_FILE = VAPhotoGallery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -481,7 +485,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B6LN4XWA2V;
+				DEVELOPMENT_TEAM = 5S24M42N68;
 				INFOPLIST_FILE = VAPhotoGallery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

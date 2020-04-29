@@ -71,6 +71,7 @@ final class RootViewController: UIViewController {
         super.viewDidLoad()
 
         self.tableView.dataSource = self
+        self.tableView.delegate = self
         state = .loading(spinner: SpinnerView())
         fetchPhotos()
     }
@@ -102,11 +103,22 @@ extension RootViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: VAPhotoGalleryCell = tableView.dequeueReusableCell()
         guard let photo = photos?[indexPath.row] else { return cell }
-        cell.childView.configure(with: photo)
+        cell.configures(with: photo)
 
         return cell
     }
+    
 }
+
+extension RootViewController: UITableViewDelegate {
+    
+     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        let animation = AnimationFactory.makeMoveUpWithBounce(rowHeight: cell.frame.height, duration: 1.0, delayFactor: 0.05)
+//        let animator = CellAnimator(animation: animation)
+//        animator.animate(cell: cell, at: indexPath, in: tableView)
+    }
+}
+
 
 
 

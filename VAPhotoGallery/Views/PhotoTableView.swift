@@ -13,7 +13,7 @@ class PhotoTableView: UITableView {
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         
-        configure()
+        // configure()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -23,11 +23,11 @@ class PhotoTableView: UITableView {
     private func configure() {
         self.register(VAPhotoGalleryCell.self)
         self.estimatedRowHeight = UITableView.automaticDimension
-        self.rowHeight = 300.0
+        self.rowHeight = 350
     }
     
     private func showTableView(in parentView: UIView) {
-        
+        self.register(VAPhotoGalleryCell.self)
         if self.superview == nil {
             self.translatesAutoresizingMaskIntoConstraints = false
             parentView.addSubview(self)
@@ -36,8 +36,9 @@ class PhotoTableView: UITableView {
                 self.leadingAnchor.constraint(equalTo: parentView.leadingAnchor),
                 parentView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: self.bottomAnchor),
                 parentView.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-                ])
+            ])
         }
+        self.layoutIfNeeded()
     }
     
     private func removeTableView() {
@@ -63,7 +64,7 @@ extension UITableView {
     func register<T: UITableViewCell>(_: T.Type) where T: ReusableView {
         register(T.self, forCellReuseIdentifier: T.defaultReuseIdentifier)
     }
-
+    
     func dequeueReusableCell<T: UITableViewCell>() -> T where T: ReusableView {
         guard let cell = dequeueReusableCell(withIdentifier: T.defaultReuseIdentifier) as? T else {
             fatalError("Could not dequeue cell with identifier: \(T.defaultReuseIdentifier)")
