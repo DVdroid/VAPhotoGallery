@@ -9,7 +9,17 @@
 import UIKit
 
 class PhotoTableView: UITableView {
-    
+
+    enum ScrollDirection {
+        case didNotMove
+        case up
+        case down
+    }
+
+    // we set a variable to hold the contentOffSet before scroll view scrolls
+    var lastContentOffset: CGFloat = 0
+    var scrollDirection: ScrollDirection = .down
+
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         

@@ -61,65 +61,18 @@ class VAPhotoGalleryCell: UITableViewCell, CellConfigurable, ReusableView {
     }
     
     func addChildViewAsSubview() {
-        
-        self.addTitleLabel()
-        self.addPhotoView()
-        self.addDescription()
-        
+
+        self.contentView.addSubview(self.childView)
+        NSLayoutConstraint.activate([
+            childView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            childView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            self.contentView.trailingAnchor.constraint(equalTo: childView.trailingAnchor),
+            self.contentView.bottomAnchor.constraint(equalTo: childView.bottomAnchor)
+        ])
     }
     
-    func addTitleLabel() {
-        self.contentView.addSubview(titleLabel)
-        let marginGuide = contentView.layoutMarginsGuide
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: marginGuide.topAnchor, constant: 20).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
-        
-    }
-    
-    func addPhotoView() {
-        self.contentView.addSubview(photoView)
-        let marginGuide = contentView.layoutMarginsGuide
-        
-        self.contentView.addSubview(photoDescriptionLabel)
-        
-        photoView.translatesAutoresizingMaskIntoConstraints = false
-        photoView.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
-        photoView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
-        
-        photoView.heightAnchor.constraint(equalToConstant: 150.0).isActive = true
-        photoView.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
-        
-    }
-    
-    func addDescription() {
-        
-        let marginGuide = contentView.layoutMarginsGuide
-        self.contentView.addSubview(photoDescriptionLabel)
-        
-        photoDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        photoDescriptionLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
-        photoDescriptionLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor, constant: -20).isActive = true
-        photoDescriptionLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
-        photoDescriptionLabel.topAnchor.constraint(equalTo: photoView.bottomAnchor, constant: 20).isActive = true
-        
-    }
-    
-    func configures(with photo: VAPhoto) {
-        self.titleLabel.text = photo.title
-        self.photoDescriptionLabel.text = photo.description
-        self.updateThumbnail(with: photo)
-    }
-    private func updateThumbnail(with photo: VAPhoto) {
-        if let urlString = photo.imageUrl,
-            let url = URL(string: urlString) {
-            self.photoView.loadImage(at: url)
-        }
-        
-    }
     override func prepareForReuse() {
         childView.resetCell()
     }
+
 }

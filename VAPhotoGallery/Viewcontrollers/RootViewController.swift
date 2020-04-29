@@ -103,7 +103,7 @@ extension RootViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: VAPhotoGalleryCell = tableView.dequeueReusableCell()
         guard let photo = photos?[indexPath.row] else { return cell }
-        cell.configures(with: photo)
+        cell.childView.configure(with: photo)
 
         return cell
     }
@@ -113,7 +113,11 @@ extension RootViewController: UITableViewDataSource {
 extension RootViewController: UITableViewDelegate {
     
      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let animation = AnimationFactory.makeMoveUpWithBounce(rowHeight: cell.frame.height, duration: 0.5, delayFactor: 0.05)
+
+        let animation = AnimationFactory.makeMoveUpWithBounce(rowHeight: cell.frame.height,
+                                                              duration: 0.5,
+                                                              delayFactor: 0.05,
+                                                              reverseAnimation: false)
         let animator = CellAnimator(animation: animation)
         animator.animate(cell: cell, at: indexPath, in: tableView)
     }

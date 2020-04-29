@@ -11,7 +11,7 @@ import UIKit
 final class VAPhotoGalleryCellView: UIView {
 
     private var contentView: UIView = {
-        let view = UIView()
+        let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -19,8 +19,8 @@ final class VAPhotoGalleryCellView: UIView {
     let photoView: UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFill
-        img.translatesAutoresizingMaskIntoConstraints = false
         img.clipsToBounds = true
+        img.translatesAutoresizingMaskIntoConstraints = false
         return img
     }()
 
@@ -64,6 +64,7 @@ final class VAPhotoGalleryCellView: UIView {
 
     private func addContentView() {
         self.addSubview(contentView)
+
         NSLayoutConstraint.activate([
             contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             contentView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
@@ -79,8 +80,8 @@ final class VAPhotoGalleryCellView: UIView {
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo:marginGuide.topAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor, constant: 20)
+            titleLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor),
+            marginGuide.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor)
         ])
     }
 
@@ -88,12 +89,12 @@ final class VAPhotoGalleryCellView: UIView {
         self.contentView.addSubview(photoView)
         let marginGuide = contentView.layoutMarginsGuide
 
-
         NSLayoutConstraint.activate([
-            photoView.heightAnchor.constraint(equalToConstant: 150.0),
+            photoView.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor),
             photoView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 20),
-            photoView.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor, constant: 20),
-            photoView.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor, constant: 20)
+            marginGuide.trailingAnchor.constraint(equalTo: photoView.trailingAnchor),
+            photoView.heightAnchor.constraint(equalToConstant: 150.0),
+
         ])
     }
 
@@ -101,15 +102,12 @@ final class VAPhotoGalleryCellView: UIView {
         self.contentView.addSubview(photoDescriptionLabel)
         let marginGuide = contentView.layoutMarginsGuide
 
-
         NSLayoutConstraint.activate([
             photoDescriptionLabel.topAnchor.constraint(equalTo:self.photoView.bottomAnchor, constant: 20),
-            photoDescriptionLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor, constant: 20),
-            photoDescriptionLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor, constant: 20),
-            self.photoDescriptionLabel.bottomAnchor.constraint(greaterThanOrEqualTo: marginGuide.bottomAnchor, constant: 0)
-            
+            photoDescriptionLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor),
+            marginGuide.trailingAnchor.constraint(equalTo: photoDescriptionLabel.trailingAnchor),
+            marginGuide.bottomAnchor.constraint(greaterThanOrEqualTo: photoDescriptionLabel.bottomAnchor, constant: 20)
         ])
-       // self.contentView.bottomAnchor.constraint(greaterThanOrEqualTo: self.photoDescriptionLabel.bottomAnchor, constant: 20).priority = UILayoutPriority(rawValue: 750)
     }
 }
 
@@ -119,7 +117,7 @@ extension VAPhotoGalleryCellView: CellChildViewConfigurable {
         self.titleLabel.text = nil
         self.photoDescriptionLabel.text = nil
         self.photoView.cancelImageLoad()
-        self.photoView.image = UIImage(named: "default-profile-icon")!
+        self.photoView.image = UIImage(named: "no-image-available-icon")!
     }
     
     func configure(with photo: VAPhoto) {
