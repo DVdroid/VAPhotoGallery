@@ -10,6 +10,7 @@
 		7521F9F12456180B00E607B4 /* VAResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521F9F02456180B00E607B4 /* VAResponseModel.swift */; };
 		755C1AF62456162A00CD7D35 /* VAPhotoGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C1AF52456162A00CD7D35 /* VAPhotoGalleryCell.swift */; };
 		7592A792245861DC00890488 /* CellAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7592A791245861DC00890488 /* CellAnimation.swift */; };
+		7592A7B8245A03AE00890488 /* NetworkWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7592A7B7245A03AE00890488 /* NetworkWrapperTests.swift */; };
 		D6789029245786520063265E /* VAPhotoGalleryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6789028245786510063265E /* VAPhotoGalleryCellView.swift */; };
 		D6CE73F72456092300D3F548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CE73F62456092300D3F548 /* AppDelegate.swift */; };
 		D6CE73FB2456092300D3F548 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CE73FA2456092300D3F548 /* RootViewController.swift */; };
@@ -44,6 +45,7 @@
 		7521F9F02456180B00E607B4 /* VAResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAResponseModel.swift; sourceTree = "<group>"; };
 		755C1AF52456162A00CD7D35 /* VAPhotoGalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAPhotoGalleryCell.swift; sourceTree = "<group>"; };
 		7592A791245861DC00890488 /* CellAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellAnimation.swift; sourceTree = "<group>"; };
+		7592A7B7245A03AE00890488 /* NetworkWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWrapperTests.swift; sourceTree = "<group>"; };
 		D6789028245786510063265E /* VAPhotoGalleryCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VAPhotoGalleryCellView.swift; sourceTree = "<group>"; };
 		D6CE73F32456092300D3F548 /* VAPhotoGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VAPhotoGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6CE73F62456092300D3F548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				D6CE740D2456092600D3F548 /* VAPhotoGalleryTests.swift */,
+				7592A7B7245A03AE00890488 /* NetworkWrapperTests.swift */,
 				D6CE740F2456092600D3F548 /* Info.plist */,
 			);
 			path = VAPhotoGalleryTests;
@@ -314,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7592A7B8245A03AE00890488 /* NetworkWrapperTests.swift in Sources */,
 				D6CE740E2456092600D3F548 /* VAPhotoGalleryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
