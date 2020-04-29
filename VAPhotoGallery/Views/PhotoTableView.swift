@@ -15,22 +15,27 @@ class PhotoTableView: UITableView {
         case up
         case down
     }
-    
-    // we set a variable to hold the contentOffSet before scroll view scrolls
-    var lastContentOffset: CGFloat = 0
-    var scrollDirection: ScrollDirection = .down
-    
+
+    var scrollDirection: ScrollDirection = .didNotMove
+
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         
+        configure()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Not implemented")
     }
     
-    private func showTableView(in parentView: UIView) {
+    private func configure() {
         self.register(VAPhotoGalleryCell.self)
+        self.estimatedRowHeight = UITableView.automaticDimension
+        self.rowHeight = UITableView.automaticDimension
+    }
+
+    private func showTableView(in parentView: UIView) {
+
         if self.superview == nil {
             self.translatesAutoresizingMaskIntoConstraints = false
             parentView.addSubview(self)
@@ -41,7 +46,6 @@ class PhotoTableView: UITableView {
                 parentView.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: self.trailingAnchor)
             ])
         }
-        self.layoutIfNeeded()
     }
     
     private func removeTableView() {

@@ -22,6 +22,8 @@ final class RootViewController: UIViewController {
         case failed(error: Error?, retryView: NoConnectionView?)
     }
 
+    var lastVelocityYSign = 0
+
     var visibleView: AddableRemovable? {
         willSet { visibleView?.removeAsSubView() }
         didSet { if let visibleView = visibleView { visibleView.addAsSubView(in: view )}}
@@ -29,9 +31,9 @@ final class RootViewController: UIViewController {
 
     private lazy var refreshButton: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(title: Constants.refreshButtonTitle,
-                                                 style: .done,
-                                                 target: self,
-                                                 action: #selector(refreshPhotoTableView))
+                                            style: .done,
+                                            target: self,
+                                            action: #selector(refreshPhotoTableView))
         return barButtonItem
     }()
 
@@ -72,6 +74,7 @@ final class RootViewController: UIViewController {
 
         self.tableView.dataSource = self
         self.tableView.delegate = self
+
         state = .loading(spinner: SpinnerView())
         fetchPhotos()
     }
@@ -91,6 +94,21 @@ final class RootViewController: UIViewController {
             }
         }
     }
+
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentVelocityY =  scrollView.panGestureRecognizer.velocity(in: scrollView.superview).y
+        let currentVelocityYSign = Int(currentVelocityY).signum()
+        if currentVelocityYSign != lastVelocityYSign &&
+            currentVelocityYSign != 0 {
+            lastVelocityYSign = currentVelocityYSign
+        }
+        if lastVelocityYSign < 0 {
+            self.tableView.scrollDirection = .down
+        } else if lastVelocityYSign > 0 {
+            self.tableView.scrollDirection = .up
+        }
+    }
 }
 
 
@@ -107,19 +125,24 @@ extension RootViewController: UITableViewDataSource {
 
         return cell
     }
-    
 }
 
 extension RootViewController: UITableViewDelegate {
     
-     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
+        guard let photoTableView = tableView as? PhotoTableView else { return }
+        let flipAnimation = photoTableView.scrollDirection == .down ? false : true
         let animation = AnimationFactory.makeMoveUpWithBounce(rowHeight: cell.frame.height,
-                                                              duration: 0.5,
-                                                              delayFactor: 0.05,
-                                                              reverseAnimation: false)
+                                                                    duration: 0.5,
+                                                                    delayFactor: 0.05,
+                                                                    flipAnimation: flipAnimation)
         let animator = CellAnimator(animation: animation)
         animator.animate(cell: cell, at: indexPath, in: tableView)
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }
 

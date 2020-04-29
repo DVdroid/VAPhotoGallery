@@ -29,44 +29,25 @@ enum AnimationFactory {
     static func makeMoveUpWithBounce(rowHeight: CGFloat,
                                      duration: TimeInterval,
                                      delayFactor: Double,
-                                     reverseAnimation: Bool) -> Animation {
+                                     flipAnimation: Bool) -> Animation {
 
-        if !reverseAnimation {
+        return { cell, indexPath, tableView in
+            cell.transform = CGAffineTransform(translationX: 0, y: flipAnimation ? -rowHeight : rowHeight)
 
-            return { cell, indexPath, tableView in
-                cell.transform = CGAffineTransform(translationX: 0, y: rowHeight)
-
-                UIView.animate(
-                    withDuration: duration,
-                    delay: delayFactor * Double(indexPath.row),
-                    usingSpringWithDamping: 1,
-                    initialSpringVelocity: 0.5,
-                    options: [.curveEaseInOut],
-                    animations: {
-                        cell.transform = CGAffineTransform(translationX: 0, y: 0)
-                })
-            }
-
-        } else {
-
-            return { cell, indexPath, tableView in
-                cell.transform = CGAffineTransform(translationX: 0, y: 0)
-
-                UIView.animate(
-                    withDuration: duration,
-                    delay: delayFactor * Double(indexPath.row),
-                    usingSpringWithDamping: 1,
-                    initialSpringVelocity: 0.5,
-                    options: [.curveEaseInOut],
-                    animations: {
-                        cell.transform = CGAffineTransform(translationX: 0, y: rowHeight)
-                })
-            }
-
+            UIView.animate(
+                withDuration: duration,
+                delay: delayFactor * Double(indexPath.row),
+                usingSpringWithDamping: 1,
+                initialSpringVelocity: 0.5,
+                options: [.curveEaseInOut],
+                animations: {
+                    cell.transform = CGAffineTransform(translationX: 0, y: 0)
+            })
         }
     }
 
     static func zoom () -> Animation {
+
         return { cell, indexPath, tableView in
             cell.transform = CGAffineTransform(translationX: 0.5, y: 0.7)
             cell.transform = CGAffineTransform(scaleX: 0, y : 0)
@@ -75,7 +56,7 @@ enum AnimationFactory {
             })
             
         }
-        
+
     }
 
     static func makeSlideIn(duration: TimeInterval, delayFactor: Double) -> Animation {
@@ -110,6 +91,7 @@ enum AnimationFactory {
 }
 
 extension UITableView {
+
     func isLastVisibleCell(at indexPath: IndexPath) -> Bool {
         guard let lastIndexPath = indexPathsForVisibleRows?.last else {
             return false

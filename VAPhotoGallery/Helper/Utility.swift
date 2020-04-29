@@ -33,7 +33,7 @@ extension Int {
 
 extension UIStoryboard {
     
-    class func instantiateViewcontroller<T>(ofType type: T.Type,
+    class func instantiateViewController<T>(ofType type: T.Type,
                                             fromStoryboard storyBoardName: String = "Main",
                                             andBundle bundle: Bundle = .main) -> UIViewController {
         return UIStoryboard(name: storyBoardName, bundle: bundle).instantiateViewController(withIdentifier: String(describing: type))
@@ -77,27 +77,5 @@ extension Result where Success == Data {
     func decoded<T: Decodable>(using decoder: JSONDecoder = .init()) throws -> T {
         let data = try get()
         return try decoder.decode(T.self, from: data)
-    }
-}
-
-extension PhotoTableView
-{
-    // this delegate is called when the scrollView (i.e your UITableView) will start scrolling
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.lastContentOffset = scrollView.contentOffset.y
-    }
-
-    // while scrolling this delegate is being called so you may now check which direction your scrollView is being scrolled to
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if self.lastContentOffset < scrollView.contentOffset.y {
-            // did move up
-            self.scrollDirection = .up
-        } else if self.lastContentOffset > scrollView.contentOffset.y {
-            // did move down
-            self.scrollDirection = .down
-        } else {
-            // didn't move
-            self.scrollDirection = .didNotMove
-        }
     }
 }

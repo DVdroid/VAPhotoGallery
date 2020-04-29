@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customisation after application launch.
         defer { window?.makeKeyAndVisible() }
 
-        let rootViewController = UIStoryboard.instantiateViewcontroller(ofType: RootViewController.self)
+        let rootViewController = UIStoryboard.instantiateViewController(ofType: RootViewController.self)
         let rootNavigationController = UINavigationController.init(rootViewController: rootViewController)
 
         window = UIWindow(frame: UIScreen.main.bounds)
